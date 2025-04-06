@@ -1,9 +1,14 @@
 <mat-card class="example-card">
   <mat-card-header>
-    <mat-card-title>Nombre: {{ puppy?.name }}</mat-card-title>
+    <mat-card-title>{{ puppy?.name }}</mat-card-title>
     <mat-card-subtitle>Origen: {{ puppy?.origin }}</mat-card-subtitle>
   </mat-card-header>
-  <img mat-card-image [src]="puppy?.image?.url" />
+  <img
+    mat-card-image
+    class="puppy-image"
+    [src]="puppy?.image?.url"
+    height="220px"
+  />
   <mat-card-content class="content-card">
     <p>
       <strong>Criado para:</strong> {{ puppy?.bred_for }} <br />
