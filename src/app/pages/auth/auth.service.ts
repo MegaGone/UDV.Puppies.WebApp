@@ -14,9 +14,21 @@ export class AuthService {
   }
 
   public login(credentials: { username: string; password: string }): boolean {
-    return credentials.username !== this._username ||
+    if (
+      credentials.username !== this._username ||
       credentials.password !== this._password
-      ? false
-      : true;
+    )
+      return false;
+
+    this._setAuthenticated();
+    return true;
+  }
+
+  private _setAuthenticated(): void {
+    localStorage.setItem('isAuthenticated', 'TRUE');
+  }
+
+  public get isAuthenticated(): boolean {
+    return localStorage.getItem('isAuthenticated') === 'TRUE';
   }
 }
