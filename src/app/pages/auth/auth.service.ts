@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
 import { environment } from '../../../environments/environment.development';
 
 @Injectable({
@@ -8,9 +9,14 @@ export class AuthService {
   private readonly _username: string;
   private readonly _password: string;
 
-  constructor() {
+  constructor(@Inject(PLATFORM_ID) private _platform: Object) {
     this._username = environment.USERNAME;
     this._password = environment.PASSWORD;
+  }
+
+  private _setAuthenticated(): void {
+    if (isPlatformBrowser(this._platform))
+      localStorage.setItem('isAuthenticated', 'TRUE');
   }
 
   public login(credentials: { username: string; password: string }): boolean {
@@ -24,11 +30,15 @@ export class AuthService {
     return true;
   }
 
-  private _setAuthenticated(): void {
-    localStorage.setItem('isAuthenticated', 'TRUE');
+  public get isAuthenticated(): boolean {
+    if (isPlatformBrowser(this._platform))
+      return localStorage.getItem('isAuthenticated') === 'TRUE';
+
+    return false;
   }
 
-  public get isAuthenticated(): boolean {
-    return localStorage.getItem('isAuthenticated') === 'TRUE';
+  public logout(): void {
+    if (isPlatformBrowser(this._platform))
+      localStorage.removeItem('isAuthenticated');
   }
 }
