@@ -1,0 +1,22 @@
+<mat-card class="example-card">
+  <mat-card-header>
+    <mat-card-title>Nombre: {{ puppy?.name }}</mat-card-title>
+    <mat-card-subtitle>Origen: {{ puppy?.origin }}</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image [src]="puppy?.image?.url" />
+  <mat-card-content class="content-card">
+    <p>
+      <strong>Criado para:</strong> {{ puppy?.bred_for }} <br />
+      <strong>Temperamento:</strong> {{ puppy?.temperament }} <br />
+      <strong>Esperanza de vida:</strong> {{ puppy?.life_span }}
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button color="primary" (click)="like(puppy?.name!)">
+      Like
+    </button>
+    <button mat-button color="primary" (click)="adopt(puppy?.name!)">
+      Share
+    </button>
+  </mat-card-actions>
+</mat-card>

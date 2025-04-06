@@ -1,2 +1,7 @@
 <header></header>
-<p>home works!</p>
+
+<div class="card-grid">
+  <div class="card-item" *ngFor="let puppy of puppies">
+    <card [puppy]="puppy"></card>
+  </div>
+</div>
