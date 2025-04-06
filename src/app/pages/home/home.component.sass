@@ -1,0 +1,24 @@
+.card-grid
+  gap: 16px
+  display: grid
+  justify-content: center
+  grid-template-columns: repeat(auto-fill, minmax(calc(100% / var(--grid-columns, 4) - 16px), 1fr))
+
+@media (max-width: 599px)
+  .card-grid
+    --grid-columns: 1
+    grid-template-columns: none
+    justify-content: center
+  
+@media (min-width: 600px) and (max-width: 959px)
+  .card-grid
+    --grid-columns: 3
+
+.card-item
+  width: 100%
+
+.button-container
+  gap: 16px
+  display: flex
+  padding: 16px
+  justify-content: center
