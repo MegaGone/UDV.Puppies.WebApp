@@ -12,7 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [MatCardModule, MatButtonModule],
 })
 export class CardComponent {
-  @Input() puppy!: Partial<IPuppy>;
+  @Input() puppy!: Partial<IPuppy> | null;
 
   public like(name: string): void {
     console.log(`El usuario le ha dado like al perro de nombre: ${name}`);
