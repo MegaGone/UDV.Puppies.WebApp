@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:prod": "ng build --configuration=production --base-href=/UDV.Puppies.WebApp/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:UDV.Puppies.WebApp": "node dist/udv.puppies.web-app/server/server.mjs"
